@@ -1,20 +1,22 @@
-import mysql2 from "mysql2";
+import mysql from "mysql2/promise";
 import dotenv from "dotenv";
+
 dotenv.config();
 
-const connection = mysql2.createConnection({
-  host: "localhost",
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: "systemthreat",
-});
+let connection;
 
-connection.connect((err) => {
-  if (err) {
-    console.error("Error connecting to the database: " + err.stack);
-    return;
-  }
+try {
+  connection = await mysql.createConnection({
+    host: "localhost",
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: "systemthreat",
+  });
+
   console.log("Connected to MySQL database as id " + connection.threadId);
-});
+} catch (err) {
+  console.error("Error connecting to the database:", err.message);
+  process.exit(1);
+}
 
 export default connection;
