@@ -1,9 +1,6 @@
 import connection from "../dbConfig/config.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const addUser = async (user_name, password) => {
   try {
