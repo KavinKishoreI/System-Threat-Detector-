@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 10vh;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo {
+  width: 200px;
+  height: 200px;
+}
+.login-signup {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.sign-up-button {
+  background-color: #2d06c7;
+  color: white;
+}
+.heros {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.heros-left {
+  flex: 1;
+}
+
+.heros-right {
+  background-image: url("./assets/lock.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 520px;
+  flex: 1;
+  position: relative;
+}
+
+.scary {
+  color: rgb(215, 80, 80);
+}
