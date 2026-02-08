@@ -1,0 +1,19 @@
+/* example request 
+  {
+  "ProcessorCoreCount": 4,
+  "Processor": "x64",
+  "SKUEditionName": "Pro",
+  "OSEdition": "Core",
+  "OSBuildNumber": 17134,
+  "ChassisType": "Notebook",
+  "AppVersion": "4.18.1807.18075",
+  "IsSystemProtected": true,
+  "IsPassiveModeEnabled": 0,
+  "AntivirusConfigID": "53447.0",
+  "FirewallEnabled": true,
+  "OSBranch": "rs4_release",
+  "AV_Imbalance": false,
+  "SignatureAgeDays": 25,
+  "OSUpdateAgeDays": 100,
+  "FirewallWithoutProtection": true
+}

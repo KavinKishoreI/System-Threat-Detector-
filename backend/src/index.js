@@ -1,5 +1,6 @@
 import connection from "./dbConfig/config.js";
 import authRoutes from "./route/auth.js";
+import predictRouter from "./route/predict.js";
 import express from "express";
 import cors from "cors";
 
@@ -14,3 +15,4 @@ if (connection != null) {
 }
 
 server.use(authRoutes);
+server.use(predictRouter);
