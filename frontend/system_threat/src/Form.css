@@ -1,0 +1,357 @@
+.form-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 3rem;
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  color: #646cff;
+}
+
+.warning-banner {
+  background-color: rgba(255, 193, 7, 0.15);
+  border: 2px solid rgba(255, 193, 7, 0.5);
+  border-left: 5px solid #ffc107;
+  color: #ffc107;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.threat-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-group label .required {
+  color: #ff6464;
+  font-weight: 700;
+}
+
+.form-group .help-tooltip {
+  position: relative;
+  display: inline-flex;
+  cursor: help;
+  margin-left: auto;
+}
+
+.form-group .help-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: rgba(100, 108, 255, 0.2);
+  color: #646cff;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.form-group .help-tooltip:hover .help-icon {
+  background-color: rgba(100, 108, 255, 0.4);
+}
+
+.form-group .help-tooltip::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #2d2d2d;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 400;
+  width: max-content;
+  max-width: 300px;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  white-space: normal;
+  text-align: center;
+}
+
+.form-group .help-tooltip:hover::after {
+  opacity: 1;
+}
+
+.field-error {
+  color: #ff6464;
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.form-group input,
+.form-group select {
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid rgba(100, 108, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  font-size: 1.1rem;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #646cff;
+  box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.2);
+}
+
+.form-group input.error,
+.form-group select.error {
+  border-color: #ff6464;
+  background-color: rgba(255, 100, 100, 0.05);
+}
+
+.form-group input::placeholder {
+  color: rgba(150, 150, 150, 0.7);
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+.form-group select option {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.form-section {
+  grid-column: 1 / -1;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(100, 108, 255, 0.2);
+}
+
+.form-section:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.form-section h3 {
+  font-size: 1.4rem;
+  color: #646cff;
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+}
+
+.submit-btn {
+  grid-column: 1 / -1;
+  padding: 1.25rem 2.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  background-color: #646cff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+  margin-top: 1.5rem;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: #535bf2;
+  transform: translateY(-1px);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-message {
+  grid-column: 1 / -1;
+  background-color: rgba(255, 100, 100, 0.1);
+  border: 1px solid rgba(255, 100, 100, 0.3);
+  color: #ff6464;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.prediction-result {
+  grid-column: 1 / -1;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.prediction-result.risk-safe {
+  background-color: rgba(100, 255, 100, 0.1);
+  border: 2px solid rgba(100, 255, 100, 0.5);
+}
+
+.prediction-result.risk-vulnerable {
+  background-color: rgba(255, 100, 100, 0.1);
+  border: 2px solid rgba(255, 100, 100, 0.5);
+}
+
+.prediction-result h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: inherit;
+}
+
+.risk-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.risk-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.risk-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+}
+
+.risk-value.risk-safe {
+  background-color: rgba(100, 255, 100, 0.2);
+  color: #4ade80;
+}
+
+.risk-value.risk-vulnerable {
+  background-color: rgba(255, 100, 100, 0.2);
+  color: #f87171;
+}
+
+.probability-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.probability-label {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.probability-value {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.probability-bar {
+  width: 100%;
+  height: 12px;
+  background-color: rgba(100, 255, 100, 0.2);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.probability-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4ade80 0%, #facc15 50%, #f87171 100%);
+  border-radius: 6px;
+  transition: width 0.5s ease;
+}
+
+.back-btn {
+  margin-top: 1.5rem;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #4b5563;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.back-btn:hover {
+  background-color: #374151;
+  transform: translateY(-1px);
+}
+
+.prediction-result pre {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+/* Light mode support */
+@media (prefers-color-scheme: light) {
+  .form-group input,
+  .form-group select {
+    background-color: #fff;
+    border-color: rgba(100, 108, 255, 0.4);
+  }
+
+  .form-group select option {
+    background-color: #fff;
+    color: #213547;
+  }
+
+  .prediction-result pre {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .threat-form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-container {
+    padding: 1rem;
+  }
+}

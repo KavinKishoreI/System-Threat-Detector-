@@ -64,7 +64,7 @@ const Landing = () => {
             Learn More
           </a>
           <br />
-          <Link to="/user/space">
+          <Link to="/user/">
             <button className="sign-up-button"> Get Started! </button>
           </Link>
         </div>
