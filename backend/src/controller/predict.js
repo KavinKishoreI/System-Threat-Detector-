@@ -21,7 +21,8 @@ const predict = async (request, response) => {
     OSUpdateAgeDays = null,
     FirewallWithoutProtection = null,
   } = request.body;
-
+  const user = request.body.userName.user_name;
+  console.log(user);
   const options = {
     method: "POST",
     headers: {
@@ -60,7 +61,6 @@ const predict = async (request, response) => {
       const predictions = await predictionRequest.json();
       response.status(201).send(predictions);
       try {
-        const user = userName.user_id;
         const dbInsert = await addPc(
           user,
           pcName,
@@ -88,11 +88,17 @@ const predict = async (request, response) => {
       } catch (e) {
         console.log("error inserting system. ");
         console.log(e);
+        return response
+          .status(500)
+          .send({ message: "DB server error TRY AGAIN LATER" });
       }
     }
   } catch (e) {
     console.log("ML SERVER error ");
     console.log(e);
+    return response
+      .status(500)
+      .send({ message: "ML server error TRY AGAIN LATER" });
   }
 };
 

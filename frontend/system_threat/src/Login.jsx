@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
-const Login = () => {
+const Login = (history) => {
+  const navigate = useNavigate();
+
   const [user_name, setuserName] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState("");
-  console.log(user_name);
-  console.log(password);
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -24,9 +26,14 @@ const Login = () => {
       const authResult = await fetch("http://localhost:3000/login", options);
       const result = await authResult.json();
       if (authResult.ok === false) setLoginStatus("Invalid Credentials");
-      else setLoginStatus("Login Successful ");
-      console.log(result);
-    } catch (e) {
+      else {
+        setLoginStatus("Login Successful");
+        Cookies.set("token", result.token);
+        setLoginStatus("Login Successful");
+        setTimeout(() => navigate("/"), 1000);
+        console.log("JWT stored in cookie");
+      }
+    } catch {
       setLoginStatus("Server Error TRY AGAIN LATER");
     }
   };

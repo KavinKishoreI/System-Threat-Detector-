@@ -26,7 +26,7 @@ const Register = () => {
       if (authResult.ok === false) setLoginStatus(result.message);
       else setLoginStatus("User Created!");
       console.log(result);
-    } catch (e) {
+    } catch {
       setLoginStatus("Server Error TRY AGAIN LATER");
     }
   };

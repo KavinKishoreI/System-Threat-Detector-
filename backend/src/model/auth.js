@@ -45,7 +45,7 @@ const loginUser = async (user_name, password) => {
       return { message: "Invalid credentials", status: 401 };
     }
 
-    const token = jwt.sign({ user_id: user.user_id }, process.env.JWT_SECRET);
+    const token = jwt.sign({ user_name: user_name }, process.env.JWT_SECRET);
 
     return { token, status: 200 };
   } catch (error) {
@@ -54,4 +54,11 @@ const loginUser = async (user_name, password) => {
   }
 };
 
-export { addUser, loginUser };
+const searchUser = async (user_id) => {
+  const option = `SELECT user_name from users where user_id = ?`;
+  const [getUser] = await connection.query(option, [user_id]);
+  console.log(getUser);
+  return { username: "dummy" };
+};
+
+export { addUser, loginUser, searchUser };

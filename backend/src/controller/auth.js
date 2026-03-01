@@ -1,5 +1,5 @@
-import { addUser, loginUser } from "../model/auth.js";
-import jwt from "jsonwebtoken";
+import { addUser, loginUser, searchUser } from "../model/auth.js";
+import jwt, { decode } from "jsonwebtoken";
 
 function isAlphaNumeric(str) {
   const alphaNumeric = /^[A-Za-z0-9_]+$/;
@@ -39,7 +39,7 @@ const login = async (request, response) => {
   } else {
     // Pasword and username validated now authenticate
     const result = await loginUser(user_name, password);
-    return response.status(result.status).json(result);
+    return response.status(result.status).send(result);
   }
 };
 // Token authentication middleware
@@ -49,10 +49,10 @@ const authToken = async (request, response, next) => {
     return response.status(401).send({ message: "Missing Auth token" });
   }
   const token = authHeader.split(" ")[1];
+
   if (token === undefined) {
     return response.status(403).send({ message: "Missing Auth token" });
   }
-
   jwt.verify(token, process.env.JWT_SECRET, (err, decodedUser) => {
     if (err) {
       return response
@@ -65,4 +65,29 @@ const authToken = async (request, response, next) => {
   });
 };
 
-export { register, login, authToken };
+const apiAuth = async (request, response) => {
+  const authHeader = request.headers["authorization"];
+  const authToken = authHeader.split(" ")[1];
+  try {
+    const user = jwt.verify(
+      authToken,
+      process.env.JWT_SECRET,
+      async (err, decodedUser) => {
+        if (err) {
+          return response
+            .status(403)
+            .json({ message: "Invalid or expired token." });
+        }
+        console.log(decodedUser);
+
+        response.status(200).send({ user_name: decodedUser.user_name });
+      },
+    );
+  } catch (e) {
+    console.log("Invalid token ", authToken);
+    console.log(e);
+    response.status(501).send({ message: "Server error" });
+  }
+};
+
+export { register, login, authToken, apiAuth };
