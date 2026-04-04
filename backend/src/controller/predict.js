@@ -21,8 +21,7 @@ const predict = async (request, response) => {
     OSUpdateAgeDays = null,
     FirewallWithoutProtection = null,
   } = request.body;
-  const user = request.body.userName.user_name;
-  console.log(user);
+
   const options = {
     method: "POST",
     headers: {
@@ -62,7 +61,7 @@ const predict = async (request, response) => {
       response.status(201).send(predictions);
       try {
         const dbInsert = await addPc(
-          user,
+          userName,
           pcName,
           ProcessorCoreCount,
           Processor,

@@ -7,5 +7,5 @@ const predictRouter = express.Router();
 
 predictRouter.use(authToken);
 predictRouter.post("/predict", predict);
-predictRouter.get("/getpcs", getPcs);
+predictRouter.get("/pcs", getPcs);
 export default predictRouter;

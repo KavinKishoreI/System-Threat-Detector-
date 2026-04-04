@@ -59,8 +59,10 @@ const authToken = async (request, response, next) => {
         .status(403)
         .json({ message: "Invalid or expired token." });
     }
+    console.log("Decoded user from token:", decodedUser);
+    request.body = request.body || {};
 
-    request.body.userName = decodedUser;
+    request.body.userName = decodedUser.user_name;
     next();
   });
 };
